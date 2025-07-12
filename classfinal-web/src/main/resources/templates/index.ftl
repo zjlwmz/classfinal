@@ -144,7 +144,10 @@
             box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.2);
         }
         
+        
+
         .action-button {
+            display: inline-block; /* 新增，使a标签支持宽度和高度 */
             width: 120px;
             background: #27AE60;
             font-weight: bold;
@@ -156,7 +159,11 @@
             margin: 15px 5px;
             transition: all 0.3s ease;
             font-size: 14px;
+            text-align: center; /* 新增，确保a标签文本居中 */
+            text-decoration: none; /* 新增，移除a标签下划线 */
+            box-sizing: border-box; /* 新增，确保内边距不影响宽度 */
         }
+
         
         .action-button:hover, .action-button:focus {
             box-shadow: 0 0 0 2px white, 0 0 0 4px #27AE60;
@@ -314,8 +321,8 @@
             <h2 class="fs-title">Complete</h2>
             <h3 class="fs-subtitle">加密完成</h3>
             <div id="success-message" class="success-message"></div>
-            <a href="#" id="download-link" class="download-link">下载加密文件</a>
-            <input type="button" name="previous" class="previous action-button" value="返回首页">
+            <a href="javascript:void(0)" id="download-link" class="download-link">下载加密文件</a>
+            <a href="/" class="previous action-button">返回首页</a>
         </fieldset>
     </form>
     

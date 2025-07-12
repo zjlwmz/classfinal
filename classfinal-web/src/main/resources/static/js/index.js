@@ -131,8 +131,6 @@ $(document).ready(function () {
                 // 设置下载链接
                 $("#download-link").attr("href", response.resultPath);
 
-                // 自动点击下一步
-                $(".next").click();
             },
             error: function (xhr, status, error) {
                 alert("加密失败: " + xhr.responseJSON.error);
@@ -140,4 +138,26 @@ $(document).ready(function () {
             }
         });
     });
+
+
+    $("#download-link").click(function(event){
+        event.preventDefault();
+        var filePath = $(this).attr('href');
+        downloadEncryptedFile(filePath);    
+    });
+
 });
+
+// 下载加密文件的函数
+function downloadEncryptedFile(filePath) {
+    // 创建隐藏的iframe用于下载文件
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = "/download?path=" + encodeURIComponent(filePath);
+    document.body.appendChild(iframe);
+    
+    // 5秒后移除iframe（可选）
+    setTimeout(function() {
+        document.body.removeChild(iframe);
+    }, 5000);
+}
