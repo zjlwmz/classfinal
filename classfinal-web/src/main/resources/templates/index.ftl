@@ -307,6 +307,9 @@
             <input type="text" name="packages" id="packages" placeholder="加密的包名(多个包用逗号分隔)">
             <input type="text" name="code" id="code" placeholder="机器码">
             <input type="text" name="exclude" id="exclude" placeholder="排除的类名(多个类用逗号分隔)">
+            <input type="text" name="libjars" id="libjars" placeholder="需要加密的lib下的jar文件名(多个用逗号分隔)">
+            <input type="text" name="classpath" id="classpath" placeholder="依赖jar包目录(多个用逗号分隔)">
+            <input type="text" name="cfgfiles" id="cfgfiles" placeholder="需要加密的配置文件名(多个用逗号分隔)">
             <input type="button" name="previous" class="previous action-button" value="上一步">
             <input type="button" name="next" class="next action-button" value="下一步">
         </fieldset>

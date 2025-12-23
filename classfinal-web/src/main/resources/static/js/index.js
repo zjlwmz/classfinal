@@ -92,13 +92,34 @@ $(document).ready(function () {
         var packages = $("#packages").val() || "全部包";
         var code = $("#code").val() || "无";
         var exclude = $("#exclude").val() || "无";
+        var libjars = $("#libjars").val() || "无";
+        var classpath = $("#classpath").val() || "无";
+        var cfgfiles = $("#cfgfiles").val() || "无";
+
+        // 构建命令字符串
+        var command = `java -jar classfinal-fatjar.jar \\
+    -f "${file}" \\
+    -pwd "${password}" \\
+    -p "${packages}" \\
+    -c "${code}" \\
+    -e "${exclude}" \\
+    -l "${libjars}" \\
+    -cp "${classpath}" \\
+    -cfg "${cfgfiles}"`;
 
         var confirmInfo = `
+                    <h4>加密参数确认：</h4>
                     <p><strong>文件:</strong> ${file}</p>
                     <p><strong>加密密码:</strong> ${password}</p>
                     <p><strong>加密的包名:</strong> ${packages}</p>
                     <p><strong>机器码:</strong> ${code}</p>
                     <p><strong>排除的类名:</strong> ${exclude}</p>
+                    <p><strong>lib下的jar:</strong> ${libjars}</p>
+                    <p><strong>依赖jar包目录:</strong> ${classpath}</p>
+                    <p><strong>加密配置文件:</strong> ${cfgfiles}</p>
+                    <br>
+                    <h4>执行命令：</h4>
+                    <pre style="background-color: #f5f5f5; padding: 10px; border-radius: 4px; font-family: monospace; white-space: pre-wrap;">${command}</pre>
                 `;
 
         $("#confirm-info").html(confirmInfo);
@@ -113,6 +134,9 @@ $(document).ready(function () {
         formData.append("packages", $("#packages").val());
         formData.append("code", $("#code").val());
         formData.append("exclude", $("#exclude").val());
+        formData.append("libjars", $("#libjars").val());
+        formData.append("classpath", $("#classpath").val());
+        formData.append("cfgfiles", $("#cfgfiles").val());
 
         // 显示加载状态
         $(this).val("加密中...").prop("disabled", true);
